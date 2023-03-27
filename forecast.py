@@ -3,9 +3,8 @@ import matplotlib.pyplot as plt
 from prophet import Prophet
 from typing import Tuple
 import gradio as gr
-from gradio.components import Dropdown, Slider, Radio
+from gradio.components import Slider, Radio
 import os
-from io import BytesIO
 from PIL import Image
 
 plt.switch_backend('agg')
@@ -53,8 +52,7 @@ def forecast_subscriptions(data: pd.DataFrame, periods: int) -> Tuple[pd.DataFra
     return future, forecast
 
 
-def plot_forecast(prepared_data: pd.DataFrame, future: pd.DataFrame, forecast: pd.DataFrame, source: str,
-                  periods: int) -> plt.Figure:
+def plot_forecast(prepared_data: pd.DataFrame, future: pd.DataFrame, forecast: pd.DataFrame, source: str) -> plt.Figure:
     subscription_levels = prepared_data['subscription_level'].unique()
     fig, ax = plt.subplots(figsize=(12, 8))
 
@@ -87,7 +85,7 @@ def forecast_and_plot(source: str, periods: int = 180) -> Image:
     data = read_data(file_path)
     prepared_data = prepare_data(data, source)
     future, forecast = forecast_subscriptions(prepared_data, periods)
-    return plot_forecast(prepared_data, future, forecast, source, periods)
+    return plot_forecast(prepared_data, future, forecast, source)
 
 
 sources = ['Android', 'iOS', 'web']
