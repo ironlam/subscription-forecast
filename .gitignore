@@ -1,0 +1,28 @@
+# Compiled python modules.
+__pycache__/
+*.pyc
+
+# Local development settings.
+.env
+
+# IDE settings.
+.vscode/
+*.idea/
+
+# Build output.
+build/
+dist/
+
+# Dependency directories.
+venv/
+
+*.pyo
+*.egg-info/
+*.log
+*.csv
+*.gz
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+dataset/
